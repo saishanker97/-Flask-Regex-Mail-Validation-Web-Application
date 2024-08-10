@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Matching Web App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { color: #333; text-align: center; }
+        form { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 600px; margin: 0 auto; }
+        label { font-weight: bold; margin-top: 10px; display: block; }
+        input[type="text"], textarea, select { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 0 auto; }
+        button:hover { background-color: #218838; }
+        h2 { color: #333; text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { background-color: #e9ecef; margin: 5px 0; padding: 10px; border-radius: 4px; }
+        .no-match { color: red; text-align: center; } .match { color: green; text-align: center; }    </style>
+</head>
+<body>
+    <h1>Regex Matching and Email Web App</h1>
+    <form method="POST" action="/results">
+        <label for="action">Choose Action:</label>
+        <select id="action" name="action" required>
+            <option value="regex">Test Regular Expression</option>
+            <option value="validate_email">Validate Email</option>
+        </select><br><br>
+        
+        <div id="regex-section">
+            <label for="test_string">Test String:</label><br>
+            <textarea id="test_string" name="test_string" rows="4" cols="50"></textarea><br><br>
+            <label for="regex">Regex:</label>
+            <input type="text" id="regex" name="regex"><br><br>
+        </div>
+        
+        <div id="email-section" style="display: none;">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email"><br><br>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('action').addEventListener('change', function () {
+            var action = this.value;
+            document.getElementById('regex-section').style.display = action === 'regex' ? 'block' : 'none';
+            document.getElementById('email-section').style.display = action === 'validate_email' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

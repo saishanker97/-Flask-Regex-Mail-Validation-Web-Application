@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+            width: 50%;
+            max-width: 600px;
+            min-height: 300px; /* Adjusted height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .match, .no-match {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        .match {
+            background-color: #e0f7e0;
+            color: green;
+        }
+        .no-match {
+            background-color: #f7e0e0;
+            color: red;
+        }
+        .valid {
+            background-color: #e0f7e0;
+            color: green;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .invalid {
+            background-color: #f7e0e0;
+            color: red;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if matches is defined %}
+            {% if matches %}
+                <ul>
+                    {% for match in matches %}
+                    <li class="match">Match Found: {{ match }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-match">No match found</p>
+            {% endif %}
+        {% endif %}
+
+        {% if is_valid is defined %}
+            <div class="{% if is_valid %}valid{% else %}invalid{% endif %}">
+                <p>{{ email }} is {% if is_valid %}valid{% else %}invalid{% endif %}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
